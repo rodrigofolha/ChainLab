@@ -1,10 +1,10 @@
 {
-  "number_of_setups": 2,
+  "number_of_setups": 1,
   "blockchain_formation_settings":
   {
     "instance_provision": ["aws"],
-    "vm_count": [6],
-    "instance_type": ["t2.micro"],
+    "vm_count": [10],
+    "instance_type": ["m5.large"],
     "image":
     {
       "image_id": null,
@@ -26,7 +26,7 @@
     "key_name": "key-sa",
     "aws_credentials": "/home/rfolha/.aws/credentials",
     "aws_config": "/home/rfolha/.aws/config",
-    "aws_region": [{"sa-east-1": 6}],
+    "aws_region": [{"sa-east-1": 10}],
     "aws_proxy_settings": null,
     "priv_key_path": "/home/rfolha/.aws/key-sa.pem",
     "tag_name": "blclab_fabric",
@@ -55,7 +55,7 @@
       "database": ["CouchDB"],
       "external_database": [0],
       "internal_orderer": [0],
-      "org_count": [2],
+      "org_count": [4],
       "peer_count": [2],
       "orderer_type": ["raft"],
       "orderer_count": [2],
@@ -71,7 +71,7 @@
       "absolute_max_bytes": [10],
       "preferred_max_bytes": [4096],
       "tls_enabled": [1],
-      "endorsement_policy": [2, 4],
+      "endorsement_policy": [4],
       "log_level": ["WARNING"],
       "private_fors": [2],
       "collection_index": ["explicit"],
@@ -84,25 +84,25 @@
   {
     "instance_provision": ["aws"],
     "number_of_clients": [4],
-    "client_type": ["t2.micro"],
+    "client_type": ["m5.large"],
     "aws_region": [{"sa-east-1": 4}],
     "exp_dir": ["/home/rfolha/experiments"],
     "tag_name": ["blclab_fabric_client"]
   },
-  "number_of_experiments": 2,
+  "number_of_experiments": 1,
   "experiment_settings":
   {
     "exp_dir": ["/home/rfolha/experiments"],
     "duration": [20],
     "localization_runs": [2],
     "repetition_runs": [0],
-    "method": ["writeData"],
+    "method": ["writeMuchData"],
     "arg": ["key"],
     "arg2": ["value"],
     "mode": ["public"],
     "shape": ["smooth"],
     "base": [0],
-    "step": [100, 100],
+    "step": [10],
     "delay": [0],
     "r2_bound": [0.90],
     "frequency_bound": [100],
@@ -114,8 +114,8 @@
     "ramp_bound": [2],
     "success_base_rate": [0.8],
     "success_step_rate": [0.04],
-    "failure_base_rate": [0.8],
-    "failure_step_rate": [0.04],
+    "failure_base_rate": [0.02],
+    "failure_step_rate": [0.01],
     "delta_max_time": [10]
   }
 }

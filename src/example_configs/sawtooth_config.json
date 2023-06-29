@@ -1,5 +1,5 @@
 {
-  "number_of_setups": 1,
+  "number_of_setups": 2,
   "blockchain_formation_settings":
   {
     "instance_provision": ["aws"],
@@ -23,13 +23,13 @@
     "proxy": null,
     "user": "ubuntu",
     "profile": "default",
-    "key_name": "key2-sa",
+    "key_name": "key-sa",
     "aws_credentials": "/home/rfolha/.aws/credentials",
     "aws_config": "/home/rfolha/.aws/config",
     "aws_region": [{"sa-east-1": 4}],
     "aws_proxy_settings": null,
-    "priv_key_path": "/home/rfolha/.aws/key2-sa.pem",
-    "tag_name": "blclab_geth",
+    "priv_key_path": "/home/rfolha/.aws/key-sa.pem",
+    "tag_name": "blclab_fabric",
     "exp_dir": "/home/rfolha/experiments",
     "public_ip": true,
     "proxy_user": "None",
@@ -39,32 +39,22 @@
         "VirtualName": "string",
         "Ebs": {
           "DeleteOnTermination": true,
-          "VolumeSize": 16,
+          "VolumeSize": 13,
           "VolumeType": "gp2",
           "Encrypted": false
         }
       }
     ],
-    "blockchain_type": "geth",
-    "geth_settings":
-    {
-      "chain_id": [11],
-      "period": [5],
-      "epoch": [30000],
-      "balance": ["0x200000000000000000000000000000000000000000000000000000000000000"],
-      "timestamp": ["0x00"],
-      "gaslimit": ["90000000000"],
-      "num_acc": [null],
-      "cache": [1024],
-      "cache.database": [75],
-      "cache.gc": [25],
-      "txpool.rejournal": ["1h0m0s"],
-      "txpool.accountslots": [16],
-      "txpool.globalslots": [4096],
-      "txpool.accountqueue": [64],
-      "txpool.globalqueue": [1024],
-      "txpool.lifetime": ["3h0m0s"],
-      "minerthreads": [1]
+    "blockchain_type": "sawtooth",
+    "sawtooth_settings": {
+      "sawtooth.consensus.algorithm.name":[ "PoET"],
+      "sawtooth.poet.initial_wait_time": [1],
+      "sawtooth.poet.target_wait_time": [1],
+      "sawtooth.publisher.max_batches_per_block": [100],
+      "sawtooth.consensus.pbft.block_publishing_delay": [1000],
+      "sawtooth.consensus.raft.heartbeat_tick": [1],
+      "sawtooth.consensus.raft.election_tick": [20],
+      "sawtooth.consensus.raft.period": [3000]
     }
   },
   "client_settings":
@@ -74,22 +64,22 @@
     "client_type": ["m5.large"],
     "aws_region": [{"sa-east-1": 4}],
     "exp_dir": ["/home/rfolha/experiments"],
-    "tag_name": ["blclab_geth_client"]
+    "tag_name": ["blclab_fabric_client"]
   },
   "number_of_experiments": 1,
   "experiment_settings":
   {
     "exp_dir": ["/home/rfolha/experiments"],
     "duration": [20],
-    "localization_runs": [1],
-    "repetition_runs": [1],
-    "method": ["makeOrder"],
+    "localization_runs": [2],
+    "repetition_runs": [0],
+    "method": ["writeData"],
     "arg": ["key"],
     "arg2": ["value"],
     "mode": ["public"],
     "shape": ["smooth"],
     "base": [0],
-    "step": [10],
+    "step": [100],
     "delay": [0],
     "r2_bound": [0.90],
     "frequency_bound": [100],
